@@ -35,18 +35,18 @@ export const %s: Component<{ width; height }> = (props) => {
 
   return pre + "".join("    " + line + '\n' for line in svg_contents.splitlines()[1:]) + post
 
-# path = 'radix-codemod/radix-icons/avatar.svg'
-# input = open(path, 'r').read()
+filenames = glob.glob("radix-icons/*.svg")
 
-# print(make_component_contents(get_new_filename(path), input))
+## make index file
+# index_contents = ""
+# for file_path in filenames:
+#   new_filename = get_new_filename(file_path)
+#   index_contents += "export * from './%s'" %(new_filename) + "\n"
+# open('icons/index.ts', 'w').write(index_contents)
 
-
-
-filenames = glob.glob("radix-codemod/radix-icons/*.svg")
-
-for file_path in filenames:
-  input = open(file_path, 'r').read()
-  new_filename = get_new_filename(file_path)
-
-  write_new_component(new_filename, make_component_contents(new_filename, input))
+## codemod
+# for file_path in filenames:
+#   input = open(file_path, 'r').read()
+#   new_filename = get_new_filename(file_path)
+#   write_new_component(new_filename, make_component_contents(new_filename, input))
   
